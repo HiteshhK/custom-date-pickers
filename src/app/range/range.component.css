@@ -1,0 +1,16 @@
+.d-flex{
+    display: flex;
+}
+
+.flex-column{
+    flex-direction: column;
+}
+.mx-2{
+    margin:0px 5px;
+}
+.mt-2{
+    margin-top: 6px;
+}
+.p-2{
+    padding:4px;
+}

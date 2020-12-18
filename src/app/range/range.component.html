@@ -1,0 +1,22 @@
+<div class="range-container d-flex">
+    <div (click)="calculateRange($event.target.innerText)" class="d-flex flex-column p-2">
+        <button type="button" *ngFor="let r of date_range" class="mt-2">
+            {{r}}
+        </button>
+    </div>
+    <div class="mx-2">
+        <mat-form-field class="mx-2">
+            <mat-label>Start Date</mat-label>
+            <input matInput disabled [matDatepicker]="st" [formControl]="startDate">
+            <mat-datepicker-toggle matSuffix [for]="st"></mat-datepicker-toggle>
+            <mat-datepicker #st disabled="false"></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="mx-2">
+            <mat-label>End Date</mat-label>
+            <input matInput disabled [matDatepicker]="et" [formControl]="endDate">
+            <mat-datepicker-toggle matSuffix [for]="et"></mat-datepicker-toggle>
+            <mat-datepicker #et disabled="false"></mat-datepicker>
+        </mat-form-field>
+    </div>
+</div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { rangeType } from '../types';
 @Component({
   selector: 'app-range',
@@ -9,12 +9,29 @@ import { rangeType } from '../types';
 export class RangeComponent implements OnInit {
   date_range: rangeType[] = ['today', 'yesterday', 'currentWeek', 'previousWeek',
     'previous2Week', 'previous4Week', 'currentMonth', 'previousMonth', 'currentYear', 'yearToDate'];
-  constructor() { }
-  startDate = new FormControl();
-  endDate = new FormControl();
+  // startDate = new FormControl();
+  // endDate = new FormControl();
+  dateForm: FormGroup;
+  selectedRange: rangeType = 'today';
+  constructor() {
+    this.dateForm = new FormGroup({
+      startDate: new FormControl(new Date()),
+      endDate: new FormControl(new Date())
+    }, this.checkRange)
+  }
+
   ngOnInit(): void {
   }
+
+  checkRange(group: FormGroup) {
+    if (group.controls.endDate.value < group.controls.startDate.value) {
+      return { notValid: true }
+    }
+    return null;
+  }
+
   calculateRange(range: rangeType) {
+    this.selectedRange = range;
     let date = new Date()
     let y = date.getFullYear()
     let m = date.getMonth();
@@ -79,7 +96,7 @@ export class RangeComponent implements OnInit {
   }
 
   setRange(sd: Date, ed: Date) {
-    this.startDate.setValue(sd)
-    this.endDate.setValue(new Date(ed))
+    this.dateForm.controls['startDate'].setValue(sd);
+    this.dateForm.controls['endDate'].setValue(ed);
   }
 }

@@ -14,3 +14,7 @@
 .p-2{
     padding:4px;
 }
+.selected{
+    background-color: #1281dd;
+    color:#fff;
+}

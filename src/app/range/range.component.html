@@ -1,22 +1,23 @@
 <div class="range-container d-flex">
     <div (click)="calculateRange($event.target.innerText)" class="d-flex flex-column p-2">
-        <button type="button" *ngFor="let r of date_range" class="mt-2">
+        <button type="button" *ngFor="let r of date_range" class="mt-2" [ngClass]="selectedRange == r?'selected':null">
             {{r}}
         </button>
     </div>
-    <div class="mx-2">
+    <form class="mx-2" [formGroup]="dateForm">
         <mat-form-field class="mx-2">
             <mat-label>Start Date</mat-label>
-            <input matInput disabled [matDatepicker]="st" [formControl]="startDate">
+            <input matInput [matDatepicker]="st" formControlName="startDate">
             <mat-datepicker-toggle matSuffix [for]="st"></mat-datepicker-toggle>
-            <mat-datepicker #st disabled="false"></mat-datepicker>
+            <mat-datepicker #st></mat-datepicker>
         </mat-form-field>
 
         <mat-form-field class="mx-2">
             <mat-label>End Date</mat-label>
-            <input matInput disabled [matDatepicker]="et" [formControl]="endDate">
+            <input matInput [matDatepicker]="et" formControlName="endDate">
             <mat-datepicker-toggle matSuffix [for]="et"></mat-datepicker-toggle>
-            <mat-datepicker #et disabled="false"></mat-datepicker>
+            <mat-datepicker #et></mat-datepicker>
         </mat-form-field>
-    </div>
+        <small *ngIf="dateForm.hasError('notValid')">Not valid</small>
+    </form>
 </div>

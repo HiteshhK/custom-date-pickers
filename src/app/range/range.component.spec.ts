@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RangeComponent } from './range.component';
 import { DomHelper } from '../testing/DomHelper';
-import { compileNgModule } from '@angular/compiler';
 describe('RangeComponent', () => {
   let component: RangeComponent;
   let fixture: ComponentFixture<RangeComponent>;
@@ -40,9 +39,7 @@ describe('RangeComponent', () => {
   let y = date.getFullYear()
   let m = date.getMonth();
   describe('Form Content', () => {
-    let date = new Date()
-    let y = date.getFullYear()
-    let m = date.getMonth();
+
     let dateMap = {
       'SUNDAY': 0,
       'MONDAY': 1

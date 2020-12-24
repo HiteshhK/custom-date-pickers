@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'date-pickers'`, () => {
+  it(`should have as title 'Select range from given links'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('date-pickers');
+    expect(app.title).toEqual('Select range from given links');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('date-pickers app is running!');
+    expect(compiled.querySelector('h1').textContent).toContain('Select range from given links');
   });
 });

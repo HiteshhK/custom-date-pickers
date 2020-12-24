@@ -93,6 +93,8 @@ export class RangeComponent implements OnInit {
         break;
       }
     }
+    console.log({ startDate: this.dateForm.get('startDate').value, endDate: this.dateForm.get('endDate').value });
+
   }
 
   setRange(sd: Date, ed: Date) {
